@@ -6,7 +6,16 @@ namespace ConsoleApplicationMoodAnalyser
 {
     public class MoodAnalyser
     {
-        public string AnalyseMood(string message)
+        private string message;
+
+        public MoodAnalyser() { }
+
+        public MoodAnalyser(string message)
+        {
+            this.message = message;
+        }
+
+        public string AnalyseMood()
         {
             if (message.Contains("Sad"))
                 return "Sad";
