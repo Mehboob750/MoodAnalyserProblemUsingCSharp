@@ -19,13 +19,15 @@ namespace ConsoleApplicationMoodAnalyser
         {
             try
             {
+                if (message.Length == 0)
+                    throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.EnteredEmpty,"Please Enter Proper Mood");
                 if (message.Contains("Sad"))
                     return "Sad";
                 return "Happy";
             }
             catch(NullReferenceException)
             {
-                return "Happy";
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.EnteredNull,"Please Enter Proper Mood");
             }
         }
     }
