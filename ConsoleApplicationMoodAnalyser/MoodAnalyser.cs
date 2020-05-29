@@ -17,9 +17,16 @@ namespace ConsoleApplicationMoodAnalyser
 
         public string AnalyseMood()
         {
-            if (message.Contains("Sad"))
-                return "Sad";
-            return "Happy";
+            try
+            {
+                if (message.Contains("Sad"))
+                    return "Sad";
+                return "Happy";
+            }
+            catch(NullReferenceException)
+            {
+                return "Happy";
+            }
         }
     }
 }

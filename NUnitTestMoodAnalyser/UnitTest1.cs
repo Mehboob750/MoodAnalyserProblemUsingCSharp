@@ -26,5 +26,13 @@ namespace NUnitTestMoodAnalyser
             Assert.AreEqual("Happy", mood);
         }
 
+        [Test]
+        public void When_GivenMessageNull_ShouldReturnHappy()
+        {
+            MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+            string mood = moodAnalyser.AnalyseMood();
+            Assert.AreEqual("Happy", mood);
+        }
+
     }
 }
