@@ -1,3 +1,6 @@
+using System;
+using System.Reflection.Emit;
+using System.Security.Cryptography.X509Certificates;
 using ConsoleApplicationMoodAnalyser;
 using NUnit.Framework;
 
@@ -54,5 +57,12 @@ namespace NUnitTestMoodAnalyser
             }
         }
 
+        [Test]
+        public void GivenMoodAnalyserClass_WhenProper_ShouldReturnObject()
+        {
+            MoodAnalyser moodAnalyser = MoodAnalyserFactory.CreateMoodAnalyser("ConsoleApplicationMoodAnalyser.MoodAnalyser");
+            bool result = moodAnalyser.Equals((MoodAnalyser)new MoodAnalyser());
+            Assert.AreEqual(result,false);
+        }
     }
 }
