@@ -90,7 +90,14 @@ namespace NUnitTestMoodAnalyser
                 Assert.AreEqual(MoodAnalyserException.ExceptionType.MethodNotFound,e.type);
 
             }
+        }
 
+        [Test]
+        public void GivenClassNameWithParametrizedConstructor_WhenProper_ShouldReturnObject()
+        {
+            MoodAnalyser moodAnalyser = MoodAnalyserFactory.CreateMoodAnalyser("ConsoleApplicationMoodAnalyser.MoodAnalyser", "I am in Sad Mood");
+            bool result = moodAnalyser.Equals((MoodAnalyser)new MoodAnalyser());
+            Assert.AreEqual(result, false);
         }
     }
 }

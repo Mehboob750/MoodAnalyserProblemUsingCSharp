@@ -10,7 +10,6 @@ namespace ConsoleApplicationMoodAnalyser
         {
         }
 
-
         public static MoodAnalyser CreateMoodAnalyser(string ClassName, params object[] constructor)
         {
             Type type = Type.GetType(ClassName);
@@ -26,7 +25,6 @@ namespace ConsoleApplicationMoodAnalyser
             catch (MoodAnalyserException e)
             {
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.MethodNotFound, "Method Not Found");
-
             }
         }
     }
