@@ -99,5 +99,18 @@ namespace NUnitTestMoodAnalyser
             bool result = moodAnalyser.Equals((MoodAnalyser)new MoodAnalyser());
             Assert.AreEqual(result, false);
         }
+
+        [Test]
+        public void GivenClassNameParametrizedConstructor_WhenNotProper_ShouldThrowException()
+        {
+            try
+            {
+                MoodAnalyser moodAnalyser = MoodAnalyserFactory.CreateMoodAnalyser("Wrong Class Name","I am in Sad Mood");
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.ClassNotFound, e.type);
+            }
+        }
     }
 }
