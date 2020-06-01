@@ -21,9 +21,5 @@ namespace ConsoleApplicationMoodAnalyser
             this.type = type;
         }
 
-        public MoodAnalyserException(string message) : base(message)
-        {
-            this.type = type;
-        }
     }
 }
