@@ -14,7 +14,7 @@ namespace NUnitTestMoodAnalyser
         }
 
         [Test]
-        public void When_GivenMessageContainsSad_ShouldReturnSad()
+        public void GivenMessage_WhenContainsSad_ShouldReturnSad()
         {
             MoodAnalyser moodAnalyser = new MoodAnalyser("I am in Sad Mood");
             string mood = moodAnalyser.AnalyseMood();
@@ -22,7 +22,7 @@ namespace NUnitTestMoodAnalyser
         }
 
         [Test]
-        public void When_GivenMessageAnyMood_ShouldReturnHappy()
+        public void GivenMessage_WhenAnyMood_ShouldReturnHappy()
         {
             MoodAnalyser moodAnalyser = new MoodAnalyser("I am in Any Mood");
             string mood = moodAnalyser.AnalyseMood();
@@ -30,7 +30,7 @@ namespace NUnitTestMoodAnalyser
         }
 
         [Test]
-        public void When_GivenMessageNull_ShouldThrowException()
+        public void GivenMessage_WhenNull_ShouldThrowException()
         {
             try
             {
@@ -44,7 +44,7 @@ namespace NUnitTestMoodAnalyser
         }
 
         [Test]
-        public void When_GivenMessageEmpty_ShouldThrowException()
+        public void GivenMessage_WhenEmpty_ShouldThrowException()
         {
             try
             {
@@ -58,7 +58,7 @@ namespace NUnitTestMoodAnalyser
         }
 
         [Test]
-        public void GivenMoodAnalyserClass_WhenProper_ShouldReturnObject()
+        public void GivenClassName_WhenProper_ShouldReturnObject()
         {
             MoodAnalyser moodAnalyser = MoodAnalyserFactory.CreateMoodAnalyser("ConsoleApplicationMoodAnalyser.MoodAnalyser");
             bool result = moodAnalyser.Equals((MoodAnalyser)new MoodAnalyser());
@@ -66,7 +66,7 @@ namespace NUnitTestMoodAnalyser
         }
 
         [Test]
-        public void GivenMoodAnalyserClass_WhenNotProper_ShouldThrowException()
+        public void GivenClassName_WhenNotProper_ShouldThrowException()
         {
             try
             {
@@ -79,7 +79,7 @@ namespace NUnitTestMoodAnalyser
         }
 
         [Test]
-        public void GivenMoodAnalyserClass_WhenWrongConstructor_ShouldThrowException()
+        public void GivenClassNameAndConstructor_WhenWrongConstructor_ShouldThrowException()
         {
             try
             {
