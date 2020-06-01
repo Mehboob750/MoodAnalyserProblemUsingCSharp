@@ -112,5 +112,19 @@ namespace NUnitTestMoodAnalyser
                 Assert.AreEqual(MoodAnalyserException.ExceptionType.ClassNotFound, e.type);
             }
         }
+
+        [Test]
+        public void GivenClassNameWithParametrizedConstructor_WhenWrongConstructor_ShouldThrowException()
+        {
+            try
+            {
+                Object moodAnalyser = MoodAnalyserFactory.CreateMoodAnalyser("ConsoleApplicationMoodAnalyser.MoodAnalyser",null);
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.MethodNotFound, e.type);
+
+            }
+        }
     }
 }
