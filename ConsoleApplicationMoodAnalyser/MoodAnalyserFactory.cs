@@ -11,13 +11,23 @@ namespace ConsoleApplicationMoodAnalyser
         }
 
 
-        public static MoodAnalyser CreateMoodAnalyser(string ClassName)
+        public static MoodAnalyser CreateMoodAnalyser(string ClassName, params object[] constructor)
         {
             Type type = Type.GetType(ClassName);
             if (type == null)
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ClassNotFound,"Class Not Found");
-            var ObjectInstance = Activator.CreateInstance(type);
-            return (MoodAnalyser)ObjectInstance;
+            try
+            {
+                var ObjectInstance = Activator.CreateInstance(type, constructor);
+                if (ObjectInstance == null)
+                    throw new MissingMethodException(MoodAnalyserException.ExceptionType.MethodNotFound+"Method Not Found");
+                return (MoodAnalyser)ObjectInstance;
+            }
+            catch (MoodAnalyserException e)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.MethodNotFound, "Method Not Found");
+
+            }
         }
     }
 }

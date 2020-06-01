@@ -10,7 +10,7 @@ namespace ConsoleApplicationMoodAnalyser
 
         public enum ExceptionType
         {
-            EnteredNull,EnteredEmpty, ClassNotFound
+            EnteredNull,EnteredEmpty,ClassNotFound,MethodNotFound
         }
 
         public ExceptionType type { get; set; }
