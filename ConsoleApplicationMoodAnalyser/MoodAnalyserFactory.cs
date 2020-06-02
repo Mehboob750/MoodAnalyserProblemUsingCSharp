@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace ConsoleApplicationMoodAnalyser
@@ -27,5 +28,14 @@ namespace ConsoleApplicationMoodAnalyser
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.MethodNotFound, "Method Not Found");
             }
         }
+
+        public static string InvokeMethodUsingReflection(string message)
+        {
+            MethodBase method = typeof(MoodAnalyser).GetMethod("AnalyseMood");
+            object objectInstance = Activator.CreateInstance(typeof(MoodAnalyser), message);
+            string mood = (string)method.Invoke(objectInstance, null);
+            return mood;
+        }
+
     }
 }

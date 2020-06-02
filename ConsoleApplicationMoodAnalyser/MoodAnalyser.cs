@@ -30,5 +30,6 @@ namespace ConsoleApplicationMoodAnalyser
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.EnteredNull, "Please Enter Proper Mood");
             }
         }
+
     }
 }
