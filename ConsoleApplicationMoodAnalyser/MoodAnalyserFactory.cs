@@ -29,12 +29,20 @@ namespace ConsoleApplicationMoodAnalyser
             }
         }
 
-        public static string InvokeMethodUsingReflection(string message)
+        public static string InvokeMethodUsingReflection(string methodName,string message)
         {
-            MethodBase method = typeof(MoodAnalyser).GetMethod("AnalyseMood");
-            object objectInstance = Activator.CreateInstance(typeof(MoodAnalyser), message);
-            string mood = (string)method.Invoke(objectInstance, null);
-            return mood;
+            try
+            {
+                MethodBase method = typeof(MoodAnalyser).GetMethod(methodName);
+                object objectInstance = Activator.CreateInstance(typeof(MoodAnalyser), message);
+                string mood = (string)method.Invoke(objectInstance, null);
+                return mood;
+            }
+            catch(NullReferenceException)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.MethodNotFound, "Method Not Found");
+            }
+
         }
 
     }

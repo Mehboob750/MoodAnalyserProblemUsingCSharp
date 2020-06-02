@@ -130,8 +130,21 @@ namespace NUnitTestMoodAnalyser
         [Test]
         public void GivenMoodMessage_WhenInvokeUsingReflectionMethodUsed_ShouldReturnHapppy()
         {
-            string result = MoodAnalyserFactory.InvokeMethodUsingReflection("I am in Any Mood");
+            string result = MoodAnalyserFactory.InvokeMethodUsingReflection("AnalyseMood", "I am in Any Mood");
             Assert.AreEqual("Happy", result);
+        }
+
+        [Test]
+        public void GivenMoodMessageToInvokeUsingReflectionMethod_WhenNotProper_ShouldThrowException()
+        {
+            try
+            {
+                string result = MoodAnalyserFactory.InvokeMethodUsingReflection("AnalyseMood897", "I am in Any Mood");
+            }
+            catch(MoodAnalyserException e)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.MethodNotFound, e.type);
+            }
         }
 
     }
